@@ -3003,7 +3003,7 @@ var ScrollyVideo = function() {
         }, l.mvhdBox.prototype.print = function(t) {
             l.FullBox.prototype.printHeader.call(this, t), t.log(t.indent + "creation_time: " + this.creation_time), t.log(t.indent + "modification_time: " + this.modification_time), t.log(t.indent + "timescale: " + this.timescale), t.log(t.indent + "duration: " + this.duration), t.log(t.indent + "rate: " + this.rate), t.log(t.indent + "volume: " + (this.volume >> 8)), t.log(t.indent + "matrix: " + this.matrix.join(", ")), t.log(t.indent + "next_track_id: " + this.next_track_id)
         }, l.tkhdBox.prototype.print = function(t) {
-            l.FullBox.prototype.printHeader.call(this, t), t.log(t.indent + "creation_time: " + this.creation_time), t.log(t.indent + "modification_time: " + this.modification_time), t.log(t.indent + "track_id: " + this.track_id), t.log(t.indent + "duration: " + this.duration), t.log(t.indent + "volume: " + (this.volume >> 8)), t.log(t.indent + "matrix: " + this.matrix.join(", ")), t.log(t.indent + "layer: " + this.layer), t.log(t.indent + "alternate_group: " + this.alternate_group), t.log(t.indent + "width: " + this.width), t.log(t.indent + "height: " + this.height)
+            l.FullBox.prototype.printHeader.call(this, t), t.log(t.indent + "creation_time: " + this.creation_time), t.log(t.indent + "modification_time: " + this.modification_time), t.log(t.indent + "track_id: " + this.track_id), t.log(t.indent + "duration: " + this.duration), t.log(t.indent + "volume: " + (this.volume >> 8)), t.log(t.indent + "matrix: " + this.matrix.join(", ")), t.log(t.indent + "layer: " + this.layer), t.log(t.indent + "alternate_group: " + this.alternate_group)/*, t.log(t.indent + "width: " + this.width), t.log(t.indent + "height: " + this.height)*/
         };
         var c = {
             createFile: function(t, e) {
@@ -3126,7 +3126,7 @@ var ScrollyVideo = function() {
                 if ("string" != typeof e) throw new Error("scrollyVideoContainer must be a valid DOM object");
                 if (this.container = document.getElementById(e), !this.container) throw new Error("scrollyVideoContainer must be a valid DOM object")
             }
-            this.src = t, this.transitionSpeed = o, this.frameThreshold = h, this.useWebCodecs = d, this.cover = i, this.sticky = s, this.full = n, this.trackScroll = a, this.debug = l, this.video = document.createElement("video"), this.video.src = t, this.video.preload = "auto", this.video.tabIndex = 0, this.video.autobuffer = !0, this.video.playsInline = !0, this.video.muted = !0, this.video.pause(), this.video.load(), this.container.appendChild(this.video), s && (this.container.style.display = "block", this.container.style.position = "static", this.container.style.top = "0"), n && (this.container.style.width = "100%", this.container.style.height = "100vh", this.container.style.overflow = "hidden"), i && this.setCoverStyle(this.video);
+            this.src = t, this.transitionSpeed = o, this.frameThreshold = h, this.useWebCodecs = d, this.cover = i, this.sticky = s, this.full = n, this.trackScroll = a, this.debug = l, this.video = document.createElement("video"), this.video.src = t, this.video.preload = "auto", this.video.tabIndex = 0, this.video.autobuffer = !0, this.video.playsInline = !0, this.video.muted = !0, this.video.pause(), this.video.load(), this.container.appendChild(this.video), s && (this.container.style.display = "block", this.container.style.position = "static", this.container.style.top = "0"), n && (this.container.style.width = "100%", this.container.style.height = "100vh", this.container.style.overflow = "visible"), i && this.setCoverStyle(this.video);
             const p = (new r).getEngine();
             this.isSafari = "WebKit" === p.name, l && this.isSafari && console.info("Safari browser detected"), this.currentTime = 0, this.targetTime = 0, this.canvas = null, this.context = null, this.frames = [], this.frameRate = 0, this.updateScrollPercentage = t => {
                 const e = this.container.parentNode.getBoundingClientRect(),
@@ -3146,7 +3146,7 @@ var ScrollyVideo = function() {
         }
         setCoverStyle(t) {
             if (this.cover) {
-                t.style.position = "absolute", t.style.top = "50%", t.style.left = "50%", t.style.transform = "translate(-50%, -50%)", t.style.minWidth = "101%", t.style.minHeight = "101%";
+                t.style.position = "static"; /*t.style.top = "50%", t.style.left = "50%", t.style.transform = "translate(-50%, -50%)", t.style.minWidth = "101%", t.style.minHeight = "101%";*/
                 const {
                     width: e,
                     height: i
@@ -3177,7 +3177,7 @@ var ScrollyVideo = function() {
                         width: i,
                         height: s
                     } = this.container.getBoundingClientRect();
-                    i / s > e.width / e.height ? (this.canvas.style.width = "100%", this.canvas.style.height = "auto") : (this.canvas.style.height = "100%", this.canvas.style.width = "auto"), this.context.drawImage(e, 0, 0, e.width, e.height)
+                    i / s > e.width / e.height ? (this.canvas.style.width = "55%", this.canvas.style.height = "auto") : (this.canvas.style.height = "100%", this.canvas.style.width = "auto"), this.context.drawImage(e, 0, 0, e.width, e.height)
                 }
             }
         }

@@ -1,5 +1,7 @@
 #scrolly-video {
-	width: 100px;
-	position: static;
+	max-width: fit-content;
+	margin-inline: auto;
+}
+canvas{
 
 }
